@@ -44,7 +44,7 @@ exports.postLogin=async (req,res,next)=>{
     title:"Login Page",
     isLogged:false,
     old_val:email,
-    error:["Password not correct"]
+    errors:["Password not correct"]
   })
   }
   //all goood
