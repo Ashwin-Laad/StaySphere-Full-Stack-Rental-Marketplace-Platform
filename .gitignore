@@ -1,0 +1,29 @@
+
+
+# Node.js / JavaScript
+node_modules/
+npm-debug.log*
+yarn-error.log
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+
+# Build / Output folders
+dist/
+build/
+out/
+
+# IDE files
+.vscode/
+.idea/
+*.suo
+*.user
+*.sln
+*.swp

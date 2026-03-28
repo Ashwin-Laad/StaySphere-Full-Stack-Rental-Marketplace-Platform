@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/output.css">
+  <title><%=title %></title>
+</head>
+<body class="bg-gray-100 text-gray-900 min-h-screen">
+
+  <header class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm z-50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      
+      <% if(!isLogged) { %>
+      <!-- Logo / Title -->
+      <a href="/" class="text-2xl font-bold text-blue-600 hover:text-blue-500 transition">
+        Air_BnB
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="flex gap-4">
+        <a href="/" class="px-4 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition shadow-sm">
+          Home
+        </a>
+        <a href="/login" class="px-4 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition shadow-sm">
+          Login
+        </a>
+        <a href="/signup" class="px-4 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition shadow-sm">
+          Sign Up
+        </a>
+      </nav>
+      <% } else { %>
+
+        <a href="/" class="text-2xl font-bold text-blue-600 hover:text-blue-500 transition">
+          Air_BnB
+        </a>
+
+        <% if(role=='guest') { %>
+        <nav class="flex gap-4">
+          <a href="/" class="px-4 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition shadow-sm">
+            Home
+          </a>
+          <a href="/home-list" class="px-4 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition shadow-sm">
+            Home List
+          </a>
+          <form action="/user/booking" method="post">
+            <button type="submit" class="px-4 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition shadow-sm">
+              Bookings
+            </button>
+          </form>
+          <a href="/favorite" class="px-4 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition shadow-sm">
+            Favorite
+          </a>
+        </nav>
+        <% } else { %>
+        <nav class="flex gap-4">
+          <a href="/host-home-list" class="px-4 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition shadow-sm">
+            Host Home List
+          </a>
+          <a href="/add-home" class="px-4 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition shadow-sm">
+            Add Home
+          </a>
+        </nav>
+        <% } %>
+
+        <form action="/logout" method="post">
+          <button type="submit" class="ml-4 px-4 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition shadow-sm">
+            Logout
+          </button>
+        </form>
+
+      <% } %>
+
+    </div>
+  </header>
