@@ -40,7 +40,7 @@ exports.postLogin=async (req,res,next)=>{
   const match=await bcrypt.compare(password,hased_pass ); 
   if(!match){
     //diff password
-     res.render("auth/login",{
+    return res.render("auth/login",{
     title:"Login Page",
     isLogged:false,
     old_val:email,
