@@ -1,3 +1,13 @@
+console.log("ENV PORT:", process.env.PORT);
+console.log("APP STARTED 🚀");
+process.on("uncaughtException", (err) => {
+  console.error("UNCAUGHT EXCEPTION:", err);
+});
+
+process.on("unhandledRejection", (err) => {
+  console.error("UNHANDLED REJECTION:", err);
+});
+
 const express=require('express');
 const userRouter=require("./Routes/user");
 const {hostRouter}=require('./Routes/host');
