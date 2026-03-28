@@ -89,6 +89,7 @@ exports.logOut=(req,res,next)=>{
 
 exports.getSignUp=(req,res,next)=>{
   res.render("auth/signUp",{title:"SignUp", isLogged: req.isLogged, 
+    role:"new_user",
     errors:[],
     oldInput:{}
   });
