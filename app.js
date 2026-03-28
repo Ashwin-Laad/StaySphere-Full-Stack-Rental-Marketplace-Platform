@@ -105,7 +105,7 @@ app.use(home.pageNotFound);
 
 
 //export mongoclient which  takes in a callback
-PORT=process.env.PORT;
+PORT=process.env.PORT || 3000;
 connectDB().then(()=>{
   app.listen(PORT,(err)=>{
   if(err) console.log(err.message);
