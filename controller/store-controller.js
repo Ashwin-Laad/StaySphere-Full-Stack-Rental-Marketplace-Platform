@@ -16,21 +16,10 @@ const home = require("../Model/home");
 //for the user
 //home page
 exports.getIndex = (req, res, next) => {
-  const Stored_data = Home.find();
-  Stored_data.then((RegisteredHouse) => {
-    //here stored data returns a promise which is used to get the data from the database
-    //once you get data render it as not defined outside
 
-    console.log(RegisteredHouse);
-    res.render("store/index", {
-      RegisteredHouse: RegisteredHouse,
-      title: "Index Page",
-      isLogged:req.isLogged ,
-      role:req.session.user.role//so header can show only some features based on log in
-    });
-  }).catch((error) => {
-    console.log(error);
-  });
+    res.render("store/index", 
+    {title:"Home Page"});
+
 };
 
 exports.availableHomes = (req, res, next) => {
@@ -419,7 +408,7 @@ exports.cancelBooking=(req,res,next)=>{
       console.log("Booking Cancelled");
       
     }
-    res.redirect("/");
+    res.redirect("/home-list");
   }).catch(err=>{
     console.log("Deleting error",err);
   })

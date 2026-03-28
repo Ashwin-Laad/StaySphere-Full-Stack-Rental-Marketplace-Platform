@@ -63,7 +63,7 @@ await req.session.save(err => {
   } else {
     console.log("Session saved successfully");
     console.log(req.session.user);
-    res.redirect("/");
+    res.redirect("/home-list");
   }
 });
 

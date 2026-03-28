@@ -1,13 +1,3 @@
-console.log("ENV PORT:", process.env.PORT);
-console.log("APP STARTED 🚀");
-process.on("uncaughtException", (err) => {
-  console.error("UNCAUGHT EXCEPTION:", err);
-});
-
-process.on("unhandledRejection", (err) => {
-  console.error("UNHANDLED REJECTION:", err);
-});
-
 const express=require('express');
 const userRouter=require("./Routes/user");
 const {hostRouter}=require('./Routes/host');
@@ -15,7 +5,6 @@ const rootDir=require("./utils/utils")
 const path=require('path')
 const app=express();
 const home=require('./controller/error');
-const Home=require("./Model/home");
 const authRouter=require("./Routes/auth");
 const multer=require("multer");
 // const RegisteredHomes=Home.fetchData();
@@ -23,7 +12,7 @@ require('dotenv').config();
 const {connectDB,MONGO_URL}=require("./utils/database");
 const session=require("express-session");
 const MongodbStorage=require("connect-mongodb-session")(session);
-const { error } = require('console');
+
 
 
 const fileFilter = (req, file, cb) => {
@@ -78,8 +67,11 @@ app.use((req,res,next)=>{
 //now middleware to redirect to login if not logged in
 app.use((req,res,next)=>{
 
-  const path_to_skip=["/login","/signup"];
-  if(path_to_skip.includes(req.url)) return next(); //prevent infinite loop as runs for login req as well
+  const publicRoutes = ["/login", "/signup"];
+
+  if (publicRoutes.includes(req.path) || req.path === "/") {
+    return next();
+  } //prevent infinite loop as runs for login req as well
 
   if(req.session.isLogged){
     //true

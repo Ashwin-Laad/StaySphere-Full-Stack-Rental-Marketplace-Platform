@@ -2,7 +2,7 @@ const express=require('express');
 const userRouter=express.Router();
 const HomesController=require('../controller/store-controller');
 
-console.log("Came to user ROuter");
+
 
 //To user only show home page
 userRouter.get("/",HomesController.getIndex);

@@ -1,56 +1,105 @@
-<%/* To display all available homes on the front page */%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StaySphere</title>
+  <link rel="stylesheet" href="/output.css">
+</head>
 
-<%- include('../partials/header') %>
-<main class="max-w-7xl mx-auto px-6 py-10 pt-24">
+<body class="bg-gray-50 text-gray-900">
 
-  <h1 class="text-3xl font-bold text-center text-blue-400 mb-10">
-   Welcome to the Air-BnB Front Page 🏡
-  </h1>
+<main>
 
- <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  <!-- 🔥 HERO WITH IMAGE -->
+  <section class="relative h-[90vh] flex items-center justify-center text-center">
 
-  <% RegisteredHouse.forEach((element) => { %>
-    <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition duration-300">
-      
-      <!-- Image -->
-      <div class="h-40 w-full overflow-hidden">
-        <img 
-          src="<%= element.photo || 'https://images.unsplash.com/photo-1568605114967-8130f3a36994' %>" 
-          alt="House Image"
-          class="w-full h-full object-cover hover:scale-105 transition duration-300"
-        >
-      </div>
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <img 
+        src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85"
+        class="w-full h-full object-cover"
+      >
+      <div class="absolute inset-0 bg-black/50"></div>
+    </div>
 
-      <!-- Content -->
-      <div class="p-4 space-y-2">
-        <h2 class="text-lg font-bold text-gray-900">
-          <%= element.houseName %>
-        </h2>
+    <!-- Content -->
+    <div class="relative z-10 text-white px-6">
+      <h1 class="text-5xl md:text-6xl font-extrabold leading-tight">
+        Discover Your Perfect Stay
+      </h1>
 
-        <p class="text-sm text-gray-500">📍 <%= element.location || 'Unknown location' %></p>
-        <p class="text-sm text-gray-500">👤 Host: <%=element.host%></p>
+      <p class="mt-6 text-lg max-w-2xl mx-auto text-gray-200">
+        StaySphere lets you explore, book, and host unique homes effortlessly.
+      </p>
 
-        <div class="flex justify-between items-center mt-2">
-          <span class="text-sm font-semibold text-gray-800">₹<%= element.pricePerNight %> / night</span>
-          <span class="text-xs bg-yellow-100 text-yellow-600 px-2 py-0.5 rounded-md">⭐ <%= element.rating || 'N/A' %></span>
-        </div>
-
-        <a href="/booking/<%=element._id %>" 
-           class="mt-2 w-full text-center block bg-blue-500 hover:bg-blue-600 text-white font-medium py-1.5 rounded-md text-sm transition shadow-sm">
-          Book
+      <div class="mt-8 flex justify-center gap-4">
+        <a href="/homes"
+           class="px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow hover:bg-blue-700 transition">
+          Explore Homes
         </a>
 
-        <form action="/favorite" method="post" class="mt-1">
-          <input type="hidden" name="id" value="<%= element._id %>">
- 
-        </form>
-
+        <a href="/host/add-home"
+           class="px-8 py-3 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-200 transition">
+          Become a Host
+        </a>
       </div>
     </div>
-  <% }); %>
 
-</div>
+  </section>
+
+  <!-- 🔥 FEATURES WITH IMAGES -->
+  <section class="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+
+    <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2" class="h-40 w-full object-cover">
+      <div class="p-5 text-center">
+        <h3 class="text-lg font-semibold">Seamless Booking</h3>
+        <p class="mt-2 text-gray-600 text-sm">
+          Browse homes and book instantly with a smooth experience.
+        </p>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267" class="h-40 w-full object-cover">
+      <div class="p-5 text-center">
+        <h3 class="text-lg font-semibold">Host with Ease</h3>
+        <p class="mt-2 text-gray-600 text-sm">
+          List your property and manage everything effortlessly.
+        </p>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae" class="h-40 w-full object-cover">
+      <div class="p-5 text-center">
+        <h3 class="text-lg font-semibold">Smart Experience</h3>
+        <p class="mt-2 text-gray-600 text-sm">
+          Built with a fast, responsive, and modern interface.
+        </p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- 🔥 CTA -->
+  <section class="bg-blue-600 py-16 text-center text-white">
+    <h2 class="text-3xl font-bold">
+      Ready to find your next stay?
+    </h2>
+
+    <p class="mt-3 text-blue-100">
+      Join StaySphere and explore homes across the platform.
+    </p>
+
+    <a href="/homes"
+       class="inline-block mt-6 px-8 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition">
+      Get Started
+    </a>
+  </section>
 
 </main>
+
 </body>
 </html>
